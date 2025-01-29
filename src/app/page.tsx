@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 //Importing Components
 import Navbar from "@/components/Navbar/Navbar";
-import { Button } from "@/components/ui/button";
 import { StickyNote } from "@/components/StickyNotes/sticky-note";
 import { ReminderCard } from "@/components/ReminderCard/reminder-card";
 import { TaskCard } from "@/components/TaskCard/task-card";
@@ -20,12 +19,12 @@ export default function Home() {
               <div className="z-1 absolute left-4 top-8 md:left-8 lg:left-16">
                 <StickyNote />
               </div>
-              {/* <div className="absolute right-4 top-8 md:right-8 lg:right-16">
+              <div className="absolute right-4 top-8 md:right-8 lg:right-16">
                 <ReminderCard />
-              </div> */}
-              {/* <div className="absolute left-4 bottom-8 md:left-8 lg:left-16">
+              </div>
+              <div className="absolute left-4 bottom-8 md:left-8 lg:left-16">
                 <IntegrationCard />
-              </div> */}
+              </div>
               <div className="z-1 absolute right-4 bottom-8 md:right-8 lg:right-16">
                 <TaskCard />
               </div>

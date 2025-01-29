@@ -16,6 +16,7 @@ export default {
         "brand-border": "#9D6B53",
         "brand-emphasis": "#774936",
         "brand-secondary": "#D69F7E",
+        "error-red": "rgb(191, 27, 13)",
         highlight: "#EDC4B3",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
