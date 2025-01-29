@@ -53,9 +53,9 @@ export default function Login() {
             )}
             <Button disabled={!canLogin} label="Log In" onClick={() => {}} />
           </div>
-          <p className="text-left font-semibold text-md">
-            Want to list your club on 4040?{" "}
-            <a className="text-brand-blue underline" href="/signup">
+          <p className="text-left text-black font-semibold text-md">
+            Want to register your company?{" "}
+            <a className="text-brand-brown underline" href="/signup">
               Get started
             </a>
           </p>
