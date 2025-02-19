@@ -21,16 +21,10 @@ export default function Login() {
   }, [emailValue, passwordValue]);
 
   return (
-    <div className="w-full h-screen flex bg-white relative overflow-hidden">
-      <Image
-        src={Backdrop}
-        alt="Background"
-        objectFit="cover"
-        className="absolute animate-pulse inset-0 z-0 left-auto h-90"
-      />
-      <div className="flex flex-col w-[30%] h-full justify-start p-16 z-50">
+    <div className="w-full h-screen flex bg-background relative overflow-hidden">
+      <div className="flex flex-col justify-around p-16 m-auto bg-white rounded-lg shadow-lg border border-brand-border">
         <Image src={Logo} alt="4040" height={70} width={70} />
-        <div className="flex flex-col h-full justify-center">
+        <div className="flex flex-col justify-center mt-8">
           <h3 className="text-black text-3xl font-bold text-left mb-6">
             Log in
           </h3>

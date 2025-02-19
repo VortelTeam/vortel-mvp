@@ -9,7 +9,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
+        background: "#f1f1f1",
         foreground: "var(--foreground)",
         "brand-brown": "#774936",
         "button-bg": "#E6B8A2",

@@ -44,8 +44,8 @@ const Button = ({
       disabled={disabled && !disabledOnClick}
       className={`${
         disabled
-          ? "bg-secondary-gray"
-          : "border-2 border-black bg-button-bg hover:bg-highlight"
+          ? "bg-background cursor-not- border-gray-600 border"
+          : "border border-black bg-button-bg hover:bg-highlight"
       }  w-full rounded-xl py-2 px-4 transition-colors duration-200`}
       onClick={
         !disabled ? onClick : disabledOnClick ? disabledOnClick : onClick
@@ -64,10 +64,10 @@ const Button = ({
       >
         {label}
       </p>
-      <div className="relative min-w-max ml-2 min-w-fit">
+      <div className="relative min-w-max ml-2">
         {hoverTooltip && hoverMessage && hoverCondition && (
           <div
-            className="absolute min-w-full border border-gray-300 absolute z-10 p-3 rounded-2xl bg-white text-black"
+            className="absolute min-w-full border border-gray-300 z-10 p-3 rounded-2xl bg-white text-black"
             style={{
               top: 0,
               left: 0,
