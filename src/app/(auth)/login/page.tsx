@@ -23,7 +23,7 @@ export default function Login() {
   return (
     <div className="w-full h-screen flex bg-background relative overflow-hidden">
       <div className="flex flex-col justify-around p-16 m-auto bg-white rounded-lg shadow-lg border border-brand-border">
-        <Image src={Logo} alt="4040" height={70} width={70} />
+        <Image src={Logo} alt="Vortel" height={70} width={70} />
         <div className="flex flex-col justify-center mt-8">
           <h3 className="text-black text-3xl font-bold text-left mb-6">
             Log in
