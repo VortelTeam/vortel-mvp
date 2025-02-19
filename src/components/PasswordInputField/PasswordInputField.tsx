@@ -31,7 +31,7 @@ const PasswordInput: FC<PasswordInputFieldProps> = ({
       <div className="flex mb-2">
         <h5 className="text-black">{label}</h5>
       </div>
-      <div className="flex relative inline-block rounded-xl w-full">
+      <div className="flex relative rounded-xl w-full">
         <input
           type={isVisible ? "text" : "password"}
           value={value}
@@ -42,7 +42,7 @@ const PasswordInput: FC<PasswordInputFieldProps> = ({
         <button
           type="button"
           onClick={toggleVisibility}
-          className="absolute right-1 top-1/2 transform -translate-y-1/2 bg-gray-200 border-none rounded-xl cursor-pointer text-black p-2 rounded-md hover:bg-gray-300"
+          className="absolute right-1 top-1/2 transform -translate-y-1/2 bg-gray-200 border-none rounded-xl cursor-pointer text-black p-2 hover:bg-gray-300"
         >
           <span style={{ fontSize: "18px" }}>
             {isVisible ? <IoEyeOffOutline /> : <IoEyeOutline />}
