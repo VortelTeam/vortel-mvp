@@ -1,24 +1,25 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
-
+import { useMemo, useState } from "react";
 import Button from "@/components/Button/Button";
 import InputField from "@/components/InputField/InputField";
 import PasswordInput from "@/components/PasswordInputField/PasswordInputField";
-import BgImage from "@/assets/Vortelassets/Backdrop.svg";
 import Logo from "@/assets/Vortelassets/LogoBlack_1.svg";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { useAuth } from "@/providers/AuthContext";
 
 export default function Signup() {
   const [firstNameValue, setFirstNameValue] = useState("");
   const [lastNameValue, setLastNameValue] = useState("");
-  const [facilityNameValue, setFacilityNameValue] = useState("");
   const [confirmPasswordValue, setConfirmPasswordValue] = useState("");
   const [termsRead, setTermsRead] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const router = useRouter();
+  const { signUp } = useAuth();
 
   const canSignup = useMemo(() => {
     return (
@@ -26,7 +27,7 @@ export default function Signup() {
       lastNameValue.length > 0 &&
       email.length > 0 &&
       password.length > 0 &&
-      confirmPasswordValue.length > 0 &&
+      confirmPasswordValue === password &&
       termsRead
     );
   }, [
@@ -38,8 +39,19 @@ export default function Signup() {
     termsRead,
   ]);
 
-  const handleSignupButtonClicked = () => {
-    console.log("Sign up clicked");
+  const handleSignupButtonClicked = async () => {
+    try {
+      await signUp({
+        email,
+        password,
+        firstName: firstNameValue,
+        lastName: lastNameValue,
+      });
+      // Redirect to dashboard after successful signup
+      router.push("/dashboard");
+    } catch (error: any) {
+      setErrorMessage(error.message || "Failed to sign up");
+    }
   };
 
   return (
@@ -86,7 +98,23 @@ export default function Signup() {
               setValue={setConfirmPasswordValue}
             />
           </div>
+          <div className="my-4">
+            <label className="flex items-center">
+              <input
+                type="checkbox"
+                checked={termsRead}
+                onChange={(e) => setTermsRead(e.target.checked)}
+                className="mr-2"
+              />
+              <span className="text-sm text-black">
+                I agree to the terms and conditions
+              </span>
+            </label>
+          </div>
           <div>
+            {errorMessage && (
+              <p className="text-red-500 mb-4">{errorMessage}</p>
+            )}
             <div className="mt-6 mb-4">
               <Button
                 label="Sign Up"
@@ -95,7 +123,7 @@ export default function Signup() {
               />
             </div>
             <p className="text-left text-black font-semibold text-md">
-              Already have and account?{" "}
+              Already have an account?{" "}
               <a className="text-brand-brown underline" href="/login">
                 Log In
               </a>
