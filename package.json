@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "gen": "npx openapi-typescript-codegen --input ./src/API/openapi.json --output ./src/API/generated"
   },
   "dependencies": {
     "@aws-sdk/client-cognito-identity-provider": "^3.750.0",
@@ -27,13 +28,16 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@openapitools/openapi-generator-cli": "^2.16.3",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.1.6",
     "next-auth": "^4.24.11",
+    "openapi-typescript-codegen": "^0.29.0",
     "postcss": "^8",
+    "swagger-codegen": "^0.1.1",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
   }
