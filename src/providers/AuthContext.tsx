@@ -277,6 +277,24 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
   };
 
+  // We need to retrieve the JWT token from the session to make authenticated requests
+  const getIdToken = () => {
+    return new Promise<string>((resolve, reject) => {
+      const cognitoUser = userPool.getCurrentUser();
+      if (cognitoUser) {
+        cognitoUser.getSession((err: any, session: any) => {
+          if (err) {
+            reject(err);
+            return;
+          }
+          resolve(session.getIdToken().getJwtToken());
+        });
+      } else {
+        reject(new Error("No authenticated user"));
+      }
+    });
+  };
+
   return (
     <AuthContext.Provider
       value={{
@@ -286,6 +304,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         signUp,
         signOut,
         completeNewPasswordChallenge,
+        getIdToken,
         // Future confirmation methods
         // confirmSignUp,
         // resendConfirmationCode

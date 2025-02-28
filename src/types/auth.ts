@@ -17,4 +17,5 @@ export interface AuthContextType {
   }) => Promise<void>;
   signOut: () => Promise<void>;
   completeNewPasswordChallenge: (newPassword: string) => Promise<void>;
+  getIdToken: () => Promise<string>;
 }

@@ -159,7 +159,10 @@
                     }
                   }
                 },
-                "required": ["fileName", "contentType"]
+                "required": [
+                  "fileName",
+                  "contentType"
+                ]
               }
             }
           }
@@ -519,7 +522,7 @@
     },
     "/jobs/{job_id}/download": {
       "get": {
-        "summary": "Download a specific file",
+        "summary": "Download a specific file in JSON or CSV format",
         "security": [
           {
             "UserPool": []
@@ -533,6 +536,20 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "name": "format",
+            "in": "query",
+            "required": false,
+            "description": "Format to download the file (json or csv)",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "json",
+                "csv"
+              ],
+              "default": "json"
+            }
           }
         ],
         "x-amazon-apigateway-integration": {
@@ -544,6 +561,27 @@
         "responses": {
           "200": {
             "description": "Successfully retrieved file",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "presigned_url": {
+                      "type": "string",
+                      "description": "URL to download the file"
+                    },
+                    "format": {
+                      "type": "string",
+                      "enum": [
+                        "json",
+                        "csv"
+                      ],
+                      "description": "Format of the file"
+                    }
+                  }
+                }
+              }
+            },
             "headers": {
               "Access-Control-Allow-Origin": {
                 "schema": {
@@ -632,5 +670,7 @@
       }
     }
   },
-  "x-amazon-apigateway-binary-media-types": ["*/*"]
+  "x-amazon-apigateway-binary-media-types": [
+    "*/*"
+  ]
 }
